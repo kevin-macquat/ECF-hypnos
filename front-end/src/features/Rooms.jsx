@@ -22,10 +22,6 @@ function Rooms() {
 
       const roomsData = await response.json();
       dispatch(addRooms(roomsData));
-
-      // console.log('Rooms component')
-      // console.log(roomsData);
-      // setRooms(roomsData);
     }());
 
   }, []);

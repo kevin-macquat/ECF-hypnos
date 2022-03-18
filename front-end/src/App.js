@@ -18,7 +18,7 @@ function App() {
       <h2>{user.email}</h2>
       <Login />
       <Logout />
-      {token ? <Rooms /> : null}
+      {token && <Rooms />}
       {user.roles.includes('ROLE_ADMIN') && <Admin />}
     </>
   );

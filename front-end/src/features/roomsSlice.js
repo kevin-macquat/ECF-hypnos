@@ -4,13 +4,11 @@ import _ from 'lodash';
 export const roomsSlice = createSlice({
   name: 'rooms',
   initialState: {
-    rooms: [],
+    rooms: []
   },
   reducers: {
     addRooms(state, action) {
-      const newRooms = _.difference(action.payload, state.rooms, 'id');
-      // console.log('Slice')
-      // console.log(newRooms);
+      const newRooms = _.differenceBy(action.payload, state.rooms, 'id');
       state.rooms.push(...newRooms);
     }
   }
