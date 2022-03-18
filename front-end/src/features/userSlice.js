@@ -17,10 +17,15 @@ export const userSlice = createSlice({
     },
     addToken(state, action) {
       state.token = action.payload
+    },
+    deleteUser(state) {
+      state.user.email = '';
+      state.user.roles = '';
+      state.token = '';
     }
   }
 })
 
-export const { addUser, addToken } = userSlice.actions;
+export const { addUser, addToken, deleteUser } = userSlice.actions;
 
 export default userSlice.reducer;
