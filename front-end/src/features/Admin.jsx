@@ -1,8 +1,12 @@
+import Header from "../components/Header";
 
 function Admin () {
 
   return(
-    <h1>Admin page</h1>
+    <>
+      <Header />
+      <h1>Admin page</h1>
+    </>
   )
 }
 

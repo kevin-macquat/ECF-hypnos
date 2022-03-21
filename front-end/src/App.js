@@ -1,25 +1,28 @@
 // import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useSelector } from 'react-redux';
+
 import Admin from './features/Admin';
-import Login from './features/Login';
+import Home from './features/Home';
 import Rooms from './features/Rooms';
 
-import { useSelector } from 'react-redux';
-import Logout from './features/Logout';
 
 function App() {
 
   const user = useSelector((state) => state.user.user);
-  const token = useSelector((state) => state.user.user.token);
 
   return (
     <>
-      <h1>Hello World !</h1>
-      <h2>{user.email}</h2>
-      <Login />
-      <Logout />
-      {token && <Rooms />}
-      {user.roles.includes('ROLE_ADMIN') && <Admin />}
+      <Router>
+        <Routes>
+          <Route path="/" exact element={<Home />} />
+          {user.roles.includes('ROLE_ADMIN') &&
+            <Route path="/admin" exact element={<Admin />} />
+          }
+          <Route path="/rooms" exact element={<Rooms />} />
+        </Routes>
+      </Router>
     </>
   );
 }

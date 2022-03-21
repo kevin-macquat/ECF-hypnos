@@ -1,6 +1,7 @@
 import jwtDecode from "jwt-decode";
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { addUser } from "./userSlice";
 
@@ -9,6 +10,7 @@ function Login() {
   const [password, setPassword] = useState('admin');
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   async function login(e) {
     e.preventDefault();
@@ -35,6 +37,7 @@ function Login() {
     const tokenForDecode = await jwtDecode(tokenData.token);
 
     dispatch(addUser({...tokenForDecode, ...tokenData}));
+    navigate('/rooms');
   }
 
   return(

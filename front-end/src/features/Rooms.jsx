@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
 import { addRooms } from './roomsSlice';
+
+import Header from '../components/Header';
 
 function Rooms() {
   const rooms = useSelector((state) => state.rooms.rooms);
@@ -27,6 +28,7 @@ function Rooms() {
 
   return (
     <>
+    <Header />
       <main>
         {rooms.length > 0 ?
           <>
