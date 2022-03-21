@@ -18,7 +18,7 @@ export const userSlice = createSlice({
     deleteUser(state) {
       state.user.email = '';
       state.user.roles = '';
-      state.token = '';
+      state.user.token = '';
     }
   }
 })
