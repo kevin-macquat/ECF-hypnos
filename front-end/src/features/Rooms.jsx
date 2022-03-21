@@ -4,9 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addRooms } from './roomsSlice';
 
 function Rooms() {
-  // const [rooms, setRooms] = useState([])
   const rooms = useSelector((state) => state.rooms.rooms);
-  const token = useSelector((state) => state.user.token);
+  const token = useSelector((state) => state.user.user.token);
   const dispatch = useDispatch();
 
   useEffect(() => {

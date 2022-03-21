@@ -10,7 +10,7 @@ import Logout from './features/Logout';
 function App() {
 
   const user = useSelector((state) => state.user.user);
-  const token = useSelector((state) => state.user.token);
+  const token = useSelector((state) => state.user.user.token);
 
   return (
     <>
