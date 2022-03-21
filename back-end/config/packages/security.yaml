@@ -50,6 +50,7 @@ security:
     access_control:
         - { path: ^/user, roles: ROLE_USER }
         - { path: ^/api/docs, roles: PUBLIC_ACCESS }
+        - { path: ^/api/rooms, roles: PUBLIC_ACCESS,methods: [GET] }
         - { path: ^/authentication_token, roles: PUBLIC_ACCESS }
         - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/admin, roles: ROLE_ADMIN }

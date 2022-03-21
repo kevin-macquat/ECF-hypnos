@@ -6,7 +6,7 @@ import Header from '../components/Header';
 
 function Rooms() {
   const rooms = useSelector((state) => state.rooms.rooms);
-  const token = useSelector((state) => state.user.user.token);
+  // const token = useSelector((state) => state.user.user.token);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,7 +16,6 @@ function Rooms() {
       const response = await fetch(url, {
         headers: {
           'Accept': 'application/json',
-          'Authorization': 'Bearer ' + token
         }
       });
 
