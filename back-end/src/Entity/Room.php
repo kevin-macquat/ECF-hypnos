@@ -18,7 +18,7 @@ class Room
     #[ORM\Column(type: 'string', length: 255)]
     private $title;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: 'text', nullable: true)]
     private $description;
 
     #[ORM\Column(type: 'integer')]
@@ -29,6 +29,13 @@ class Room
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $booking_link;
+
+    #[ORM\ManyToOne(targetEntity: Hotel::class, inversedBy: 'rooms')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $hotel;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $galery;
 
     public function getId(): ?int
     {
@@ -91,6 +98,30 @@ class Room
     public function setBookingLink(?string $booking_link): self
     {
         $this->booking_link = $booking_link;
+
+        return $this;
+    }
+
+    public function getHotel(): ?Hotel
+    {
+        return $this->hotel;
+    }
+
+    public function setHotel(?Hotel $hotel): self
+    {
+        $this->hotel = $hotel;
+
+        return $this;
+    }
+
+    public function getGalery(): ?string
+    {
+        return $this->galery;
+    }
+
+    public function setGalery(?string $galery): self
+    {
+        $this->galery = $galery;
 
         return $this;
     }
