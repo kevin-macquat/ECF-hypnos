@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 
 import Logout from "../features/Logout";
+import h_hypnos_logo from "../images/h_hypnos_logo.png";
+import hypnos_name_logo from "../images/hypnos_name_logo.png";
 
 function Header() {
 
@@ -15,6 +17,10 @@ function Header() {
     <header id="main-header">
       <nav>
         <ul>
+          <li>
+            <img src={h_hypnos_logo} alt="Logo" />
+            <img src={hypnos_name_logo} alt="Logo name" />
+          </li>
           <li>
             <Link to="/">Accueil</Link>
           </li>
