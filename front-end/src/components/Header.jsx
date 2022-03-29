@@ -18,25 +18,38 @@ function Header() {
       <nav>
         <ul>
           <li>
-            <img src={h_hypnos_logo} alt="Logo" />
-            <img src={hypnos_name_logo} alt="Logo name" />
+            <Link to="/">
+              <img src={h_hypnos_logo} alt="Logo" />
+              <img src={hypnos_name_logo} alt="Logo name" />
+            </Link>
           </li>
           <li>
-            <Link to="/">Accueil</Link>
+            Liste des hotels
           </li>
           <li>
-            <Link to="/rooms">rooms</Link>
+            Reserver
           </li>
-          {hotels.map(hotel => {
-              return(
-              <li>
-                <Link to={'/hotel/' + hotel.id}>{hotel.name}</Link>
-              </li>)
-           })}
-          {user.roles.includes('ROLE_ADMIN') &&
+           {user.roles.includes('ROLE_USER') ?
             <li>
-              <Link to="/admin">admin</Link>
+              Mes reservations
             </li>
+            :
+            <li></li>
+          }
+          {user.roles.includes('ROLE_MANAGER') &&
+            <li>
+              Mes établissements
+            </li>
+          }
+          {user.roles.includes('ROLE_ADMIN') &&
+            <>
+              <li>
+              Gestion de hotels
+              </li>
+              <li>
+              Gestion de Managers
+              </li>
+            </>
           }
           {token && <li><Logout /></li>}
         </ul>

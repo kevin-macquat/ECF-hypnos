@@ -16,8 +16,13 @@ function Logout() {
   return(
     <>
       <button
+        id="button-logout"
         onClick={() => logout()}
-      >logout</button>
+      >
+        <span>
+          logout
+        </span>
+      </button>
     </>
   )
 }
