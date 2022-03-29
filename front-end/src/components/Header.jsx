@@ -24,7 +24,7 @@ function Header() {
             </Link>
           </li>
           <li>
-            Liste des hotels
+            <Link to="/hotels">Liste des hotels</Link>
           </li>
           <li>
             Reserver

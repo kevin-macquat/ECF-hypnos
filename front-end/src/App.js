@@ -8,6 +8,7 @@ import { addHotels } from './features/hotelsSlice';
 import Admin from './features/Admin';
 import Home from './features/Home';
 import Hotel from './features/Hotel';
+import Hotels from './features/Hotels';
 import Rooms from './features/Rooms';
 
 
@@ -41,12 +42,17 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" exact element={<Home />} />
+
+
+          <Route path="/hotels" exact element={<Hotels />} />
           {hotels.map(hotel => {
              return <Route path={'/hotel/' + hotel.id} exact element={<Hotel component={hotel} />}/>
-           })}
+          })}
+
           {user.roles.includes('ROLE_ADMIN') &&
             <Route path="/admin" exact element={<Admin />} />
           }
+
           <Route path="/rooms" exact element={<Rooms />} />
         </Routes>
       </Router>
