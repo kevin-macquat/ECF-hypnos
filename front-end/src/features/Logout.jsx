@@ -20,7 +20,7 @@ function Logout() {
         onClick={() => logout()}
       >
         <span>
-          logout
+          Déconnection
         </span>
       </button>
     </>

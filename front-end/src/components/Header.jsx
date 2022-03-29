@@ -29,12 +29,10 @@ function Header() {
           <li>
             Reserver
           </li>
-           {user.roles.includes('ROLE_USER') ?
+           {user.roles.includes('ROLE_USER') &&
             <li>
               Mes reservations
             </li>
-            :
-            <li></li>
           }
           {user.roles.includes('ROLE_MANAGER') &&
             <li>
@@ -51,7 +49,13 @@ function Header() {
               </li>
             </>
           }
-          {token && <li><Logout /></li>}
+          {token ?
+            <li><Logout /></li>
+          :
+            <li>
+              <Link to="/login">Connexion</Link>
+            </li>
+          }
         </ul>
       </nav>
     </header>

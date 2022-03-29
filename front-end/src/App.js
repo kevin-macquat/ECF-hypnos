@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addHotels } from './features/hotelsSlice';
 
 import Admin from './features/Admin';
+import Login from './features/Login';
 import Home from './features/Home';
 import Hotel from './features/Hotel';
 import Hotels from './features/Hotels';
@@ -53,6 +54,7 @@ function App() {
             <Route path="/admin" exact element={<Admin />} />
           }
 
+          <Route path="/login" exact element={<Login />} />
           <Route path="/rooms" exact element={<Rooms />} />
         </Routes>
       </Router>

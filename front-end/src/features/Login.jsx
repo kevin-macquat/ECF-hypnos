@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { addUser } from "./userSlice";
+import Header from '../components/Header';
 
 function Login() {
   const [email, setEmail] = useState('admin@admin.com');
@@ -42,6 +43,7 @@ function Login() {
 
   return(
     <>
+      <Header />
       <h1>Login</h1>
       <form>
         <label>
