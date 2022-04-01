@@ -1,7 +1,7 @@
 import jwtDecode from "jwt-decode";
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { addUser } from "./userSlice";
 import Header from '../components/Header';
@@ -38,7 +38,7 @@ function Login() {
     const tokenForDecode = await jwtDecode(tokenData.token);
 
     dispatch(addUser({...tokenForDecode, ...tokenData}));
-    navigate('/rooms');
+    navigate('/hotels');
   }
 
   return(
@@ -67,6 +67,7 @@ function Login() {
           onClick={(e) => login(e)}
         >login</button>
       </form>
+      <Link to="/create_account">Créer un compte</Link>
     </>
   )
 }
