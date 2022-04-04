@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
-import Header from '../components/Header';
-
 function CreateAccount() {
   const [firstname, setFirstname] = useState('Jean');
   const [name, setName] = useState('FamilleJean');
@@ -15,8 +13,6 @@ function CreateAccount() {
   async function createAccount(e) {
     e.preventDefault();
 
-    const url = 'http://ecf.local/api/users';
-
     if(
       email === "" ||
       password !== passwordForConfirmation ||
@@ -26,6 +22,7 @@ function CreateAccount() {
       return
     }
 
+    const url = 'http://ecf.local/api/users';
     const postData = {
       "email": email,
       "roles": [
@@ -35,7 +32,6 @@ function CreateAccount() {
       "firstName": firstname,
       "lastName": name
     }
-
     const response = await fetch(url, {
       method: "POST",
       headers: {
@@ -43,9 +39,7 @@ function CreateAccount() {
       body: JSON.stringify(postData),
     });
 
-    console.log(response);
     const responseData = await response.json();
-    console.log(responseData);
 
     // temporaly for hash password
 
@@ -53,23 +47,18 @@ function CreateAccount() {
       "password": password,
       "plainPassword": password
     }
-
-    const responsePassword = await fetch(url + '/' + responseData.id, {
+    await fetch(url + '/' + responseData.id, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/merge-patch+json"},
       body: JSON.stringify(modifyPassword),
     });
-    console.log(responsePassword);
-    const responsePasswordData = await responsePassword.json();
-    console.log(responsePasswordData);
 
     navigate('/');
   }
 
   return(
     <>
-      <Header />
       <h1>Créer un compte</h1>
       <form>
         <label>

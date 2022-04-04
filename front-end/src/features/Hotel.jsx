@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addRooms, deleteRooms } from './roomsSlice';
-
-import Header from '../components/Header';
+import _ from 'lodash';
 
 function Hotel(props) {
   const hotel = props.component;
-  const rooms = useSelector((state) => state.rooms.rooms);
+  const rooms = _.sortBy(useSelector((state) => state.rooms.rooms), ['title', 'price']);
 
   const dispatch = useDispatch();
 
@@ -31,12 +30,11 @@ function Hotel(props) {
 
   return (
     <>
-      <Header />
       <p>
         {hotel.name}
       </p>
       {rooms.map(room => {
-        return <p>{room.title}</p>
+        return <p key={room.id}>{room.title}</p>
       })}
     </>
   );

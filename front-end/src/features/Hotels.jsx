@@ -2,12 +2,11 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
 import { addHotels } from './hotelsSlice';
-
-import Header from '../components/Header';
+import _ from 'lodash';
 
 function Hotels() {
 
-  const hotels = useSelector((state) => state.hotels.hotels);
+  const hotels = _.sortBy(useSelector((state) => state.hotels.hotels), ['name']);
 
   const dispatch = useDispatch();
 
@@ -29,7 +28,6 @@ function Hotels() {
 
   return (
     <>
-    <Header />
       <main>
         {hotels.length > 0 ?
           <>

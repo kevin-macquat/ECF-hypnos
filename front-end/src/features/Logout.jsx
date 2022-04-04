@@ -19,9 +19,7 @@ function Logout() {
         id="button-logout"
         onClick={() => logout()}
       >
-        <span>
-          Déconnection
-        </span>
+        Déconnection
       </button>
     </>
   )

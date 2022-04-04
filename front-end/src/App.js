@@ -8,10 +8,10 @@ import { addHotels } from './features/hotelsSlice';
 import Admin from './features/Admin';
 import CreateAccount from './features/CreateAccount';
 import Login from './features/Login';
+import Header from './components/Header';
 import Home from './features/Home';
 import Hotel from './features/Hotel';
 import Hotels from './features/Hotels';
-import Rooms from './features/Rooms';
 
 
 function App() {
@@ -24,16 +24,13 @@ function App() {
   useEffect(() => {
     (async function() {
       const url = 'http://ecf.local/api/hotels';
-
       const response = await fetch(url, {
         headers: {
           'Accept': 'application/json',
         }
       });
-      // console.log(response);
 
       const hotelsData = await response.json();
-      // console.log(hotelsData);
       dispatch(addHotels(hotelsData));
     }());
 
@@ -42,6 +39,7 @@ function App() {
   return (
     <>
       <Router>
+        <Header />
         <Routes>
           <Route path="/" exact element={<Home />} />
 
@@ -57,7 +55,6 @@ function App() {
 
           <Route path="/create_account" exact element={<CreateAccount />} />
           <Route path="/login" exact element={<Login />} />
-          <Route path="/rooms" exact element={<Rooms />} />
         </Routes>
       </Router>
     </>
