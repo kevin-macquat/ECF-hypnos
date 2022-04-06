@@ -52,7 +52,7 @@ security:
         - { path: ^/api/docs, roles: PUBLIC_ACCESS }
         - { path: ^/api/hotels, roles: PUBLIC_ACCESS, methods: [GET] }
         - { path: ^/api/rooms, roles: PUBLIC_ACCESS, methods: [GET] }
-        - { path: ^/api/users, roles: PUBLIC_ACCESS, methods: [POST, PATCH] }
+        - { path: ^/api/users, roles: PUBLIC_ACCESS, methods: [GET, POST, PATCH] }
         - { path: ^/authentication_token, roles: PUBLIC_ACCESS }
         - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/admin, roles: ROLE_ADMIN }

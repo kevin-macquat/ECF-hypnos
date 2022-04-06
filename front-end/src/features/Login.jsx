@@ -1,13 +1,14 @@
 import jwtDecode from "jwt-decode";
 import { useState } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { addUser } from "./userSlice";
 
 function Login() {
-  const [email, setEmail] = useState('admin@admin.com');
-  const [password, setPassword] = useState('admin');
+  const [email, setEmail] = useState('manager@manager.com');
+  const [password, setPassword] = useState('manager');
+  const user = useSelector((state) => state.user.user);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -36,8 +37,22 @@ function Login() {
     const tokenData = await response.json();
     const tokenForDecode = await jwtDecode(tokenData.token);
 
-    dispatch(addUser({...tokenForDecode, ...tokenData}));
-    navigate('/hotels');
+
+    if(tokenForDecode.roles.includes('ROLE_MANAGER')){
+      const manager = await fetch("http://ecf.local/api/users/" + tokenForDecode.id, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"},
+      });
+      const managerData = await manager.json();
+      const hotelId = managerData.hotel.slice(12);
+
+      dispatch(addUser({...tokenForDecode, ...tokenData, 'hotel': hotelId}));
+      navigate('/hotel/' + hotelId);
+    }else {
+      dispatch(addUser({...tokenForDecode, ...tokenData}));
+      navigate('/hotels');
+    }
   }
 
   return(

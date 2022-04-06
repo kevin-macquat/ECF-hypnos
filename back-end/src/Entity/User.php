@@ -34,6 +34,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255)]
     private $last_name;
 
+    #[ORM\OneToOne(mappedBy: 'user', targetEntity: Hotel::class, cascade: ['persist', 'remove'])]
+    private $hotel;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -142,5 +145,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPlainPassword($plainPassword): void
     {
         $this->plainPassword = $plainPassword;
+    }
+
+    public function getHotel(): ?Hotel
+    {
+        return $this->hotel;
+    }
+
+    public function setHotel(?Hotel $hotel): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($hotel === null && $this->hotel !== null) {
+            $this->hotel->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($hotel !== null && $hotel->getUser() !== $this) {
+            $hotel->setUser($this);
+        }
+
+        $this->hotel = $hotel;
+
+        return $this;
     }
 }
