@@ -37,15 +37,16 @@ function Login() {
     const tokenData = await response.json();
     const tokenForDecode = await jwtDecode(tokenData.token);
 
-
     if(tokenForDecode.roles.includes('ROLE_MANAGER')){
       const manager = await fetch("http://ecf.local/api/users/" + tokenForDecode.id, {
         method: "GET",
         headers: {
-          "Content-Type": "application/json"},
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer ' + tokenData.token,
+        },
       });
       const managerData = await manager.json();
-      const hotelId = managerData.hotel.slice(12);
+      const hotelId = Number(managerData.hotel.slice(12));
 
       dispatch(addUser({...tokenForDecode, ...tokenData, 'hotel': hotelId}));
       navigate('/hotel/' + hotelId);

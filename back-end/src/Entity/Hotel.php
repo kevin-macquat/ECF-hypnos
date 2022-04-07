@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\HotelRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -33,6 +34,7 @@ class Hotel
     private $stars;
 
     #[ORM\OneToMany(mappedBy: 'hotel', targetEntity: Room::class, orphanRemoval: true)]
+    #[ApiSubresource]
     private $rooms;
 
     #[ORM\OneToOne(inversedBy: 'hotel', targetEntity: User::class, cascade: ['persist', 'remove'])]

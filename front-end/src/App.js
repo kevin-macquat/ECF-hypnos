@@ -12,6 +12,8 @@ import Header from './components/Header';
 import Home from './features/Home';
 import Hotel from './features/Hotel';
 import Hotels from './features/Hotels';
+import CreateRoom from './features/CreateRoom';
+import UpdateRoom from './features/UpdateRoom';
 
 
 function App() {
@@ -51,6 +53,13 @@ function App() {
 
           {user.roles.includes('ROLE_ADMIN') &&
             <Route path="/admin" exact element={<Admin />} />
+          }
+
+          {user.roles.includes('ROLE_MANAGER') &&
+            <>
+              <Route path="/create_room" exact element={<CreateRoom />} />
+              <Route path="/update_room" exact element={<UpdateRoom />} />
+            </>
           }
 
           <Route path="/create_account" exact element={<CreateAccount />} />

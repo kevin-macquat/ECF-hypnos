@@ -44,6 +44,10 @@ security:
 
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
+    role_hierarchy:
+        ROLE_USER: ROLE_USER
+        ROLE_MANAGER : [ROLE_USER, ROLE_MANAGER]
+        ROLE_ADMIN: [ ROLE_MANAGER, ROLE_USER, ROLE_ADMIN ]
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
@@ -52,7 +56,9 @@ security:
         - { path: ^/api/docs, roles: PUBLIC_ACCESS }
         - { path: ^/api/hotels, roles: PUBLIC_ACCESS, methods: [GET] }
         - { path: ^/api/rooms, roles: PUBLIC_ACCESS, methods: [GET] }
-        - { path: ^/api/users, roles: PUBLIC_ACCESS, methods: [GET, POST, PATCH] }
+        - { path: ^/api/rooms, roles: ROLE_MANAGER, methods: [POST, PATCH, DELETE] }
+        - { path: ^/api/users, roles: ROLE_USER, methods: [GET, PATCH] }
+        - { path: ^/api/users, roles: PUBLIC_ACCESS, methods: [POST] }
         - { path: ^/authentication_token, roles: PUBLIC_ACCESS }
         - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
