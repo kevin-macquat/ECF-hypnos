@@ -44,7 +44,10 @@ function Header() {
           {user.roles.includes('ROLE_ADMIN') &&
             <>
               <li>
-                Gestion de hotels
+                <Link to={"/admin/hotel_liste"}
+                >
+                  Gestion de hotels
+                </Link>
               </li>
               <li>
                 Gestion de Managers

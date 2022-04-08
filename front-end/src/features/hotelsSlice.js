@@ -10,10 +10,16 @@ export const hotelsSlice = createSlice({
     addHotels(state, action) {
       const newHotels = _.differenceBy(action.payload, state.hotels, 'id');
       state.hotels.push(...newHotels);
+    },
+    deleteHotels(state, action) {
+      const oldHotels = _.differenceBy(state.hotels, action.payload, 'id');
+      state.hotels = state.hotels.filter(
+        hotel => !oldHotels.includes(hotel)
+      );
     }
   }
 })
 
-export const { addHotels } = hotelsSlice.actions;
+export const { addHotels, deleteHotels } = hotelsSlice.actions;
 
 export default hotelsSlice.reducer;

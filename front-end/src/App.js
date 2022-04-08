@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { addHotels } from './features/hotelsSlice';
 
-import Admin from './features/Admin';
 import CreateAccount from './features/CreateAccount';
 import Login from './features/Login';
 import Header from './components/Header';
@@ -14,6 +13,8 @@ import Hotel from './features/Hotel';
 import Hotels from './features/Hotels';
 import CreateRoom from './features/CreateRoom';
 import UpdateRoom from './features/UpdateRoom';
+import CreateHotel from './features/CreateHotel';
+import UpdateHotel from './features/UpdateHotel';
 
 
 function App() {
@@ -52,7 +53,11 @@ function App() {
           })}
 
           {user.roles.includes('ROLE_ADMIN') &&
-            <Route path="/admin" exact element={<Admin />} />
+            <>
+              <Route path="/admin/hotel_liste" exact element={<Hotels />} />
+              <Route path="/admin/create_hotel" exact element={<CreateHotel />} />
+              <Route path="/admin/update_hotel" exact element={<UpdateHotel />} />
+            </>
           }
 
           {user.roles.includes('ROLE_MANAGER') &&
