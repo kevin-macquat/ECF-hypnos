@@ -54,16 +54,17 @@ function App() {
 
           {user.roles.includes('ROLE_ADMIN') &&
             <>
-              <Route path="/admin/hotel_liste" exact element={<Hotels />} />
               <Route path="/admin/create_hotel" exact element={<CreateHotel />} />
               <Route path="/admin/update_hotel" exact element={<UpdateHotel />} />
+              <Route path="/manager/create_room" exact element={<CreateRoom />} />
+              <Route path="/manager/update_room" exact element={<UpdateRoom />} />
             </>
           }
 
           {user.roles.includes('ROLE_MANAGER') &&
             <>
-              <Route path="/create_room" exact element={<CreateRoom />} />
-              <Route path="/update_room" exact element={<UpdateRoom />} />
+              <Route path="/manager/create_room" exact element={<CreateRoom />} />
+              <Route path="/manager/update_room" exact element={<UpdateRoom />} />
             </>
           }
 

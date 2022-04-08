@@ -4,10 +4,10 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 function UpdateHotel() {
   const location = useLocation();
-  console.log(location);
-  const hotel = location.state;
-  console.log(hotel);
+  const navigate = useNavigate();
+
   const user = useSelector((state) => state.user.user);
+  const hotel = location.state;
 
   const [name, setName] = useState(hotel.name);
   const [city, setCity] = useState(hotel.city);
@@ -16,8 +16,6 @@ function UpdateHotel() {
   // const [stars, setPassword] = useState('test');
   // const [userId, setPasswordForConfirmation] = useState('test');
   // const [bookingLink, setPasswordForConfirmation] = useState('test');
-
-  const navigate = useNavigate();
 
   async function updateRoom(e) {
     e.preventDefault();
@@ -31,14 +29,12 @@ function UpdateHotel() {
     }
 
     const url = 'http://ecf.local/api/hotels/' + hotel.id;
-
     const postData = {
       "name": name,
       "city": city,
       "adress": adress
-    }
-
-    const response = await fetch(url, {
+    };
+    await fetch(url, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/merge-patch+json",
@@ -46,10 +42,7 @@ function UpdateHotel() {
       },
       body: JSON.stringify(postData),
     });
-
-    const responseData = await response.json();
-    console.log(responseData);
-    navigate("/admin/hotel_liste");
+    navigate("/hotels");
   }
 
   return(

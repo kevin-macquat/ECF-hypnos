@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 function CreateHotel() {
+  const navigate = useNavigate();
 
   const user = useSelector((state) => state.user.user);
 
@@ -13,8 +14,6 @@ function CreateHotel() {
   // const [stars, setPassword] = useState('test');
   // const [userId, setPasswordForConfirmation] = useState('test');
   // const [bookingLink, setPasswordForConfirmation] = useState('test');
-
-  const navigate = useNavigate();
 
   async function createHotel(e) {
     e.preventDefault();
@@ -33,7 +32,7 @@ function CreateHotel() {
       "city": city,
       "adress": adress
     }
-    const response = await fetch(url, {
+    await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,19 +41,7 @@ function CreateHotel() {
       body: JSON.stringify(postData),
     });
 
-    const responseData = await response.json();
-    console.log(responseData)
-
-    const hotelResponse = await fetch("http://ecf.local/api/hotels/", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"},
-    });
-
-    const hotelData = await hotelResponse.json();
-    console.log(hotelData);
-
-    navigate("/admin/hotel_liste");
+    navigate("/hotels");
   }
 
   return(

@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
 function CreateAccount() {
+  const navigate = useNavigate();
+
   const [firstname, setFirstname] = useState('Jean');
   const [name, setName] = useState('FamilleJean');
   const [email, setEmail] = useState('test@test.com');
   const [password, setPassword] = useState('test');
   const [passwordForConfirmation, setPasswordForConfirmation] = useState('test');
-
-  const navigate = useNavigate();
 
   async function createAccount(e) {
     e.preventDefault();
@@ -50,7 +50,8 @@ function CreateAccount() {
     await fetch(url + '/' + responseData.id, {
       method: "PATCH",
       headers: {
-        "Content-Type": "application/merge-patch+json"},
+        "Content-Type": "application/merge-patch+json",
+      },
       body: JSON.stringify(modifyPassword),
     });
 

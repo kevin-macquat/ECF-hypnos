@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
 import _ from 'lodash';
+import { createSlice } from "@reduxjs/toolkit";
 
 export const roomsSlice = createSlice({
   name: 'rooms',
@@ -13,7 +13,6 @@ export const roomsSlice = createSlice({
     },
     deleteRooms(state, action) {
       const oldRooms = _.differenceBy(state.rooms, action.payload, 'id');
-      // console.log(oldRooms);
       state.rooms = state.rooms.filter(
         room => !oldRooms.includes(room)
       );

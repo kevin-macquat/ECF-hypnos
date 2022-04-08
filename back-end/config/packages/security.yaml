@@ -57,8 +57,7 @@ security:
         - { path: ^/api/hotels, roles: PUBLIC_ACCESS, methods: [GET] }
         - { path: ^/api/rooms, roles: PUBLIC_ACCESS, methods: [GET] }
         - { path: ^/api/rooms, roles: ROLE_MANAGER, methods: [POST, PATCH, DELETE] }
-        - { path: ^/api/users, roles: ROLE_USER, methods: [GET, PATCH] }
-        - { path: ^/api/users, roles: PUBLIC_ACCESS, methods: [POST] }
+        - { path: ^/api/users, roles: PUBLIC_ACCESS, methods: [GET, POST, PATCH] }
         - { path: ^/authentication_token, roles: PUBLIC_ACCESS }
         - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/admin, roles: ROLE_ADMIN }

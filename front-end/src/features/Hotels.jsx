@@ -1,16 +1,16 @@
+import _ from 'lodash';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
+
 import { addHotels, deleteHotels } from './hotelsSlice';
-import _ from 'lodash';
 
 function Hotels() {
-  const hotels = _.sortBy(useSelector((state) => state.hotels.hotels), ['name']);
-  const user = useSelector((state) => state.user.user);
-  console.log(user);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const hotels = _.sortBy(useSelector((state) => state.hotels.hotels), ['name']);
+  const user = useSelector((state) => state.user.user);
 
   async function getHotels() {
     const url = 'http://ecf.local/api/hotels/';
@@ -45,24 +45,32 @@ function Hotels() {
     dispatch(deleteHotels(await getHotels()));
   }
 
+  const isPermitted = user.roles.includes('ROLE_ADMIN');
+
   return (
     <>
       <main>
+      {isPermitted &&
         <button
         onClick={() => navigate('/admin/create_hotel')}
         >
           Ajouter un hotel
         </button>
+      }
         {hotels.length > 0 ?
           <>
             {hotels.map(hotel => {
               return(
-                <article key={hotel.id}>
-                  <Link to={'/hotel/' + hotel.id}>{hotel.name}</Link>
-                  <p>{hotel.city}</p>
-                  <p>{hotel.adress}</p>
-                  <p>{hotel.stars}☆</p>
-                  {user.roles.includes('ROLE_ADMIN') &&
+                <>
+                  <Link to={'/hotel/' + hotel.id}>
+                    <article key={hotel.id}>
+                      <p>{hotel.name}</p>
+                      <p>{hotel.city}</p>
+                      <p>{hotel.adress}</p>
+                      <p>{hotel.stars}☆</p>
+                    </article>
+                  </Link>
+                  {isPermitted &&
                     <>
                       <button
                         onClick={() => navigate('/admin/update_hotel', {state : hotel} )}
@@ -76,7 +84,7 @@ function Hotels() {
                       </button>
                     </>
                   }
-                </article>
+                </>
               )
             })}
           </>

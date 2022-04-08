@@ -1,17 +1,16 @@
 import jwtDecode from "jwt-decode";
 import { useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { addUser } from "./userSlice";
 
 function Login() {
-  const [email, setEmail] = useState('manager@manager.com');
-  const [password, setPassword] = useState('manager');
-  const user = useSelector((state) => state.user.user);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [email, setEmail] = useState('manager@manager.com');
+  const [password, setPassword] = useState('manager');
 
   async function login(e) {
     e.preventDefault();
@@ -26,7 +25,6 @@ function Login() {
       "email": email,
       "password": password
     }
-
     const response = await fetch(url, {
       method: "POST",
       headers: {
@@ -42,7 +40,6 @@ function Login() {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          'Authorization': 'Bearer ' + tokenData.token,
         },
       });
       const managerData = await manager.json();
@@ -58,7 +55,7 @@ function Login() {
 
   return(
     <>
-      <h1>Login</h1>
+      <h1>Connexion</h1>
       <form>
         <label>
           Email:
@@ -69,7 +66,7 @@ function Login() {
           />
         </label>
         <label>
-          Password:
+          Mot de passe:
           <input
             type="password"
             value={password}
@@ -79,9 +76,15 @@ function Login() {
         <button
           type="submit"
           onClick={(e) => login(e)}
-        >login</button>
+        >
+          Connexion
+        </button>
       </form>
-      <Link to="/create_account">Créer un compte</Link>
+      <button
+        onClick={() => navigate('/create_account')}
+      >
+        Créer un compte
+      </button>
     </>
   )
 }

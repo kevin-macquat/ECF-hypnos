@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
-// import { addUser } from '../features/userSlice';
 
 import Logout from "../features/Logout";
 import h_hypnos_logo from "../images/h_hypnos_logo.png";
@@ -29,11 +28,13 @@ function Header() {
           <li>
             Reserver
           </li>
-           {user.roles.includes('ROLE_USER') &&
+
+          {user.roles.includes('ROLE_USER') &&
             <li>
               Mes reservations
             </li>
           }
+
           {user.roles.includes('ROLE_MANAGER') &&
             <li>
               <Link to={"/hotel/" + user.hotel}>
@@ -41,19 +42,13 @@ function Header() {
               </Link>
             </li>
           }
+
           {user.roles.includes('ROLE_ADMIN') &&
-            <>
-              <li>
-                <Link to={"/admin/hotel_liste"}
-                >
-                  Gestion de hotels
-                </Link>
-              </li>
-              <li>
-                Gestion de Managers
-              </li>
-            </>
+            <li>
+              Gestion de Managers
+            </li>
           }
+
           {token ?
             <li>
               <Logout />

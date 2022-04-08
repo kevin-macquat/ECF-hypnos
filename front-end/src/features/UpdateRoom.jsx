@@ -4,6 +4,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 function UpdateRoom() {
   const location = useLocation();
+  const navigate = useNavigate();
+
   const room = location.state;
   const user = useSelector((state) => state.user.user);
 
@@ -14,7 +16,6 @@ function UpdateRoom() {
   // const [galery, setPasswordForConfirmation] = useState('test');
   // const [bookingLink, setPasswordForConfirmation] = useState('test');
 
-  const navigate = useNavigate();
 
   async function updateRoom(e) {
     e.preventDefault();
@@ -35,17 +36,20 @@ function UpdateRoom() {
       "price": Number(price)
     }
 
-    const response = await fetch(url, {
+    await fetch(url, {
       method: "PATCH",
       headers: {
-        "Content-Type": "application/merge-patch+json"},
-        'Authorization': 'Bearer ' + user.token,
+        "Content-Type": "application/merge-patch+json",
+        "Authorization": "Bearer " + user.token,
+      },
       body: JSON.stringify(postData),
     });
 
-    const responseData = await response.json();
-    console.log(responseData);
-    navigate('/hotel/' + user.hotel);
+    if(user.roles.includes('ROLE_MANAGER')) {
+      navigate('/hotel/' + user.hotel);
+    } else if(user.roles.includes('ROLE_ADMIN')) {
+      navigate(-1);
+    }
   }
 
   return(
@@ -63,7 +67,7 @@ function UpdateRoom() {
         <label>
           Description:
           <input
-            type="test"
+            type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />

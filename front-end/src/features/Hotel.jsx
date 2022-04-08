@@ -1,16 +1,17 @@
+import _ from 'lodash';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate  } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 import { addRooms, deleteRooms } from './roomsSlice';
-import _ from 'lodash';
 
 function Hotel(props) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const hotel = props.component;
   const rooms = _.sortBy(useSelector((state) => state.rooms.rooms), ['title', 'price']);
   const user = useSelector((state) => state.user.user);
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   async function getHotelRooms() {
     const url = 'http://ecf.local/api/hotels/' + hotel.id + '/rooms';
@@ -31,7 +32,7 @@ function Hotel(props) {
       dispatch(addRooms(await getHotelRooms()));
     })()
 
-  }, [hotel.rooms]);
+  }, []);
 
   async function deleteRoom(room) {
     await fetch('http://ecf.local/api/rooms/' + room.id, {
@@ -45,25 +46,29 @@ function Hotel(props) {
     dispatch(deleteRooms(await getHotelRooms()));
   }
 
+  const isPermitted = (user.roles.includes('ROLE_MANAGER') && user.hotel === hotel.id) ||
+  user.roles.includes('ROLE_ADMIN');
+
   return (
     <>
-    {(user.roles.includes('ROLE_MANAGER') && user.hotel === hotel.id) &&
-      <button
-      onClick={() => navigate('/create_room')}
-      >
-        Ajouter une chambre
-      </button>
-    }
+      {isPermitted &&
+        <button
+        onClick={() => navigate('/manager/create_room')}
+        >
+          Ajouter une chambre
+        </button>
+      }
       <p>
         {hotel.name}
       </p>
       {rooms.map(room => {
         return <>
           <p key={room.id}>{room.title}</p>
-          {(user.roles.includes('ROLE_MANAGER') && user.hotel === hotel.id) &&
+
+          {isPermitted &&
             <>
               <button
-                onClick={() => navigate('/update_room', {state : room} )}
+                onClick={() => navigate('/manager/update_room', {state : room} )}
               >
                 modifer
               </button>
@@ -74,6 +79,7 @@ function Hotel(props) {
               </button>
             </>
           }
+
         </>
       })}
     </>
