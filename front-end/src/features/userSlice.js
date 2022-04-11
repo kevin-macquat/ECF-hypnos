@@ -8,6 +8,8 @@ export const userSlice = createSlice({
       roles: '',
       token: '',
       hotel: '',
+      firstName: '',
+      lastName: '',
     }
   },
   reducers: {
@@ -16,12 +18,16 @@ export const userSlice = createSlice({
       state.user.roles = action.payload.roles;
       state.user.token = action.payload.token;
       state.user.hotel = action.payload.hotel;
+      state.user.firstName = action.payload.firstName;
+      state.user.lastName = action.payload.lastName;
     },
     deleteUser(state) {
       state.user.email = '';
       state.user.roles = '';
       state.user.token = '';
       state.user.hotel = '';
+      state.user.firstName = '';
+      state.user.lastName = '';
     }
   }
 })

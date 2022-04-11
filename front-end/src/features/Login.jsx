@@ -35,21 +35,32 @@ function Login() {
     const tokenData = await response.json();
     const tokenForDecode = await jwtDecode(tokenData.token);
 
-    if(tokenForDecode.roles.includes('ROLE_MANAGER')){
-      const manager = await fetch("http://ecf.local/api/users/" + tokenForDecode.id, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const managerData = await manager.json();
-      const hotelId = Number(managerData.hotel.slice(12));
+    const user = await fetch("http://ecf.local/api/users/" + tokenForDecode.id, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const userData = await user.json();
 
-      dispatch(addUser({...tokenForDecode, ...tokenData, 'hotel': hotelId}));
-      navigate('/hotel/' + hotelId);
+    if(tokenForDecode.roles.includes('ROLE_MANAGER')){
+      const hotelId = Number(userData.hotel.slice(12));
+      dispatch(addUser({
+        ...tokenForDecode,
+        ...tokenData,
+        'hotel': hotelId,
+        'firstName': userData.first_name,
+        'lastName': userData.last_name,
+      }));
+      navigate('/');
     }else {
-      dispatch(addUser({...tokenForDecode, ...tokenData}));
-      navigate('/hotels');
+      dispatch(addUser({
+        ...tokenForDecode,
+        ...tokenData,
+        'firstName': userData.first_name,
+        'lastName': userData.last_name,
+      }));
+      navigate('/');
     }
   }
 
