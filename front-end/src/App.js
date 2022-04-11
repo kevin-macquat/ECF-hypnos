@@ -15,6 +15,7 @@ import CreateRoom from './features/CreateRoom';
 import UpdateRoom from './features/UpdateRoom';
 import CreateHotel from './features/CreateHotel';
 import UpdateHotel from './features/UpdateHotel';
+import ManageUser from './features/ManageUser';
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
 
           {user.roles.includes('ROLE_ADMIN') &&
             <>
+              <Route path="/admin/manage_user" exact element={<ManageUser />} />
               <Route path="/admin/create_hotel" exact element={<CreateHotel />} />
               <Route path="/admin/update_hotel" exact element={<UpdateHotel />} />
               <Route path="/manager/create_room" exact element={<CreateRoom />} />

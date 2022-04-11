@@ -45,7 +45,9 @@ function Header() {
 
           {user.roles.includes('ROLE_ADMIN') &&
             <li>
+              <Link to={"/admin/manage_user"}>
               Gestion de Managers
+              </Link>
             </li>
           }
 
