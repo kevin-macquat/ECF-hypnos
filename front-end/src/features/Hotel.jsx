@@ -32,6 +32,7 @@ function Hotel(props) {
       dispatch(addRooms(await getHotelRooms()));
     })()
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function deleteRoom(room) {

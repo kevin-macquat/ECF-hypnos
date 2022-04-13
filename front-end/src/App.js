@@ -38,6 +38,7 @@ function App() {
       dispatch(addHotels(hotelsData));
     }());
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -73,6 +73,7 @@ function UpdateHotel() {
   useEffect(() => {
     getUserList();
     getHotelsList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return(
