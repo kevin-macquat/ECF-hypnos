@@ -1,6 +1,7 @@
 {
   "name": "ecf",
   "version": "0.1.0",
+  "homepage": "https://kevin-macquat.github.io/ECF-hypnos/",
   "private": true,
   "dependencies": {
     "@mapbox/node-pre-gyp": "^1.0.9",

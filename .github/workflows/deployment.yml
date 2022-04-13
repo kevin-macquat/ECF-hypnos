@@ -1,0 +1,24 @@
+name: deployment
+on:
+  push:
+    branches:
+    - master
+jobs:
+  deploy-front-end:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: front-end
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2.4.0
+    - name: install
+      run: npm install
+    - name: build
+      run: npm run build
+    - name: deploy
+      uses: JamesIves/github-pages-deploy-action@4.1.6
+      with:
+        branch: gh-pages
+        folder: front-end/build
+        commit-message: deploy to GitHub Pages
