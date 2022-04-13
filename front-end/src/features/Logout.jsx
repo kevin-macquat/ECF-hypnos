@@ -14,12 +14,12 @@ function Logout() {
 
   return(
     <>
-      <button
-        id="button-logout"
+      <p
+        id="logout"
         onClick={() => logout()}
       >
         Déconnection
-      </button>
+      </p>
     </>
   )
 }

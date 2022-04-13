@@ -59,11 +59,11 @@ function CreateAccount() {
   }
 
   return(
-    <>
+    <div id="create_account">
       <h1>Créer un compte</h1>
       <form>
         <label>
-          Prenom:
+          <p>Prenom:</p>
           <input
             type="text"
             value={firstname}
@@ -71,7 +71,7 @@ function CreateAccount() {
           />
         </label>
         <label>
-          Nom:
+          <p>Nom:</p>
           <input
             type="test"
             value={name}
@@ -79,7 +79,7 @@ function CreateAccount() {
           />
         </label>
         <label>
-          Email:
+          <p>Email:</p>
           <input
             type="email"
             value={email}
@@ -87,7 +87,7 @@ function CreateAccount() {
           />
         </label>
         <label>
-          Password:
+          <p>Password:</p>
           <input
             type="password"
             value={password}
@@ -95,13 +95,14 @@ function CreateAccount() {
           />
         </label>
         <label>
-          Password:
+          <p>Password:</p>
           <input
             type="password"
             value={passwordForConfirmation}
             onChange={(e) => setPasswordForConfirmation(e.target.value)}
           />
         </label>
+        <br/>
         <button
           type="submit"
           onClick={(e) => createAccount(e)}
@@ -109,7 +110,7 @@ function CreateAccount() {
           créer
         </button>
       </form>
-    </>
+    </div>
   )
 }
 

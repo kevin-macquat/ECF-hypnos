@@ -65,11 +65,11 @@ function Login() {
   }
 
   return(
-    <>
+    <div id="login">
       <h1>Connexion</h1>
       <form>
         <label>
-          Email:
+          <p>Email:</p>
           <input
             type="email"
             value={email}
@@ -77,13 +77,14 @@ function Login() {
           />
         </label>
         <label>
-          Mot de passe:
+          <p>Mot de passe:</p>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
+        <br/>
         <button
           type="submit"
           onClick={(e) => login(e)}
@@ -96,7 +97,7 @@ function Login() {
       >
         Créer un compte
       </button>
-    </>
+    </div>
   )
 }
 

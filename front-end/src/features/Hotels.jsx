@@ -49,7 +49,7 @@ function Hotels() {
 
   return (
     <>
-      <main>
+      <main id='hotel-list'>
       {isPermitted &&
         <button
         onClick={() => navigate('/admin/create_hotel')}
@@ -65,8 +65,8 @@ function Hotels() {
                   <Link to={'/hotel/' + hotel.id}>
                     <article key={hotel.id}>
                       <p>{hotel.name}</p>
-                      <p>{hotel.city}</p>
-                      <p>{hotel.adress}</p>
+                      <span>{hotel.city}, </span>
+                      <span>{hotel.adress}</span>
                       <p>{hotel.stars}☆</p>
                     </article>
                   </Link>

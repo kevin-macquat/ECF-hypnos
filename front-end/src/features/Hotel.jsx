@@ -50,7 +50,7 @@ function Hotel(props) {
   user.roles.includes('ROLE_ADMIN');
 
   return (
-    <>
+    <div id='hotel_page'>
       {isPermitted &&
         <button
         onClick={() => navigate('/manager/create_room')}
@@ -58,31 +58,40 @@ function Hotel(props) {
           Ajouter une chambre
         </button>
       }
-      <p>
+      <h1>
         {hotel.name}
-      </p>
+      </h1>
       {rooms.map(room => {
-        return <>
-          <p key={room.id}>{room.title}</p>
-
-          {isPermitted &&
-            <>
-              <button
-                onClick={() => navigate('/manager/update_room', {state : room} )}
-              >
-                modifer
-              </button>
-              <button
-                onClick={() => deleteRoom(room)}
-              >
-                supprimer
-              </button>
-            </>
+        return <div className='room' key={room.id}>
+          {room.image &&
+            <img src={room.image} alt="Hotel room"/>
           }
+          <div>
+            <p>{room.title}</p>
+            {room.description &&
+              <p>{room.description}</p>
+            }
 
-        </>
+            {isPermitted &&
+              <>
+                <button
+                  onClick={() => navigate('/manager/update_room', {state : room} )}
+                >
+                  modifer
+                </button>
+                <button
+                  onClick={() => deleteRoom(room)}
+                >
+                  supprimer
+                </button>
+              </>
+            }
+          </div>
+          <div id='css-test'></div>
+
+        </div>
       })}
-    </>
+    </div>
   );
 }
 

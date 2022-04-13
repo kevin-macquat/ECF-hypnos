@@ -1,69 +1,390 @@
-#main-header {
-  border-bottom: 1px solid #323031;
-}
-
-#main-header nav ul {
-  padding-left: 0px;
-  padding-right: 20px;
-  margin: 0px;
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-}
-
-/* delete when all link and button for menu work */
-#main-header nav ul li {
-  color: #084C61;
-  list-style: none;
-  cursor: pointer;
-  font-size: 24px;
-  font-weight: 500;
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-}
-
-#main-header nav ul li:hover {
-  color: #FFC857;
-}
-
-#main-header nav ul li a {
-  color: #084C61;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 24px;
-  font-weight: 500;
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-}
-
-#main-header nav ul li a:hover {
-  color: #FFC857;
-}
-
-#button-logout {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  margin: 0;
-  padding: 0;
-  text-align: left;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-#button-logout {
-  color: #084C61;
-  font-size: 24px;
-  font-weight: 500;
-  text-decoration: none;
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-}
-
-#button-logout:hover {
-  color: #FFC857;
-}
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Roboto:wght@500&display=swap');
 
 #main-header img {
   max-height: 80px;
 }
+
+button {
+  background-color: #323031;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  padding: 8px 20px 8px 20px;
+  border: none;
+  border-radius: 10px;
+}
+
+#main-header {
+  border-bottom: 1px solid #323031;
+  font-family: 'Roboto', sans-serif;
+}
+
+@media screen and (max-width: 725px) {
+
+  #main-header nav {
+    height: 80px;
+    display: flex;
+    background-color: #177e89;
+    justify-content: space-between;
+  }
+
+  #main-header nav ul {
+    background-color: #177e89;
+    color: #323031;
+    list-style: none;
+    display: block;
+    position: absolute;
+    top: 80px;
+    right: 0px;
+    margin: 0px;
+    padding: 20px;
+  }
+
+  #main-header nav ul li {
+    padding-bottom: 25px;
+    font-size: 18px;
+  }
+
+  #main-header nav ul li a {
+    text-decoration: none;
+    color: #323031;
+  }
+
+  #logout {
+    margin: 0px;
+  }
+
+  #login,
+  #create_account
+  {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    background-color: #C4C4C4;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    /* display: flex;
+    justify-content: center; */
+    text-align: center;
+  }
+
+  #login h1,
+  #create_account h1
+  {
+    margin: 0px;
+    padding-top: 30px;
+    font-weight: 100;
+    font-size: 32px;
+  }
+
+  #login form label p,
+  #create_account form label p
+  {
+    margin: 0px;
+    padding-top: 30px;
+  }
+
+  /* #login button,
+  #create_account button
+  {
+    background-color: #323031;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    padding: 8px 20px 8px 20px;
+    border: none;
+    border-radius: 10px;
+  } */
+
+  #login > button {
+    padding: 8px 20px 8px 20px;
+    margin-top: 40px;
+    margin-bottom: 100px;
+  }
+
+  #login form button,
+  #create_account form button
+  {
+    margin-top: 40px;
+  }
+
+  #create_account {
+    padding-bottom: 60px;
+  }
+
+  #hotel_page {
+    background-color: #177e89;
+    color: white;
+  }
+
+  #hotel_page img {
+    max-width: 100%;
+  }
+
+  #hotel_page h1 {
+    font-family: 'Cormorant Garamond', sans-serif;
+    font-size: 48px;
+    margin: 0px;
+    padding-top: 51px;
+    padding-bottom: 51px;
+    /* background-color: #177e89;
+    color: white */
+  }
+
+  .room {
+    background-color: #084C61;
+    /* font-family: 'Cormorant Garamond', sans-serif; */
+    font-size: 20px;
+    padding-bottom: 10px;
+  }
+
+  .room p {
+    margin: 0px;
+  }
+
+  #home h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 36px;
+    margin: 0px;
+    padding-top: 100px;
+  }
+
+  #home h2 {
+    font-family: 'Cormorant Garamond', sans-serif;
+    font-size: 36px;
+    margin: 0px;
+    padding-bottom: 100px;
+  }
+
+  #hotel-list a {
+    text-decoration: none;
+  }
+
+  #hotel-list a article {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: white;
+    background-color: #084C61;
+    margin-bottom: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  #hotel-list a article p {
+    margin: 0px;
+  }
+}
+
+
+
+@media screen and (min-width: 726px) {
+
+  /* #main-header {
+    border-bottom: 1px solid #323031;
+    font-family: 'Roboto', sans-serif;
+  } */
+
+  #main-header nav ul {
+    padding-left: 0px;
+    padding-right: 20px;
+    margin: 0px;
+    align-items: center;
+    display: flex;
+    background-color: #177e89;
+    justify-content: space-between;
+  }
+
+  /* delete when all link and button for menu work */
+  #main-header nav ul li {
+    color: #323031;
+    list-style: none;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: 500;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #main-header nav ul li:hover {
+    color: #FFC857;
+  }
+
+  #main-header nav ul li a {
+    color: #323031;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 24px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #main-header nav ul li a:hover {
+    color: #FFC857;
+  }
+
+  #button-logout {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  #button-logout {
+    color: #084C61;
+    font-size: 24px;
+    font-weight: 500;
+    text-decoration: none;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #button-logout:hover {
+    color: #FFC857;
+  }
+
+  #main-header img {
+    max-height: 80px;
+  }
+
+  #login,
+  #create_account
+  {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    background-color: #C4C4C4;
+    margin: 70px 200px 100px 200px;
+    /* display: flex;
+    justify-content: center; */
+    text-align: center;
+  }
+
+  #login h1,
+  #create_account h1
+  {
+    margin: 0px;
+    padding-top: 30px;
+    font-weight: 100;
+    font-size: 32px;
+  }
+
+  #login form label p,
+  #create_account form label p
+  {
+    margin: 0px;
+    padding-top: 30px;
+  }
+
+  /* #login button,
+  #create_account button
+  {
+    background-color: #323031;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    padding: 8px 20px 8px 20px;
+    border: none;
+    border-radius: 10px;
+  } */
+
+  #login > button {
+    padding: 8px 20px 8px 20px;
+    margin-top: 40px;
+    margin-bottom: 100px;
+  }
+
+  #login form button,
+  #create_account form button
+  {
+    margin-top: 40px;
+  }
+
+  #create_account {
+    padding-bottom: 60px;
+  }
+
+  #hotel_page {
+    background-color: #177e89;
+    color: white;
+  }
+
+  #hotel_page img {
+    max-width: 50%;
+    max-height: 500px;
+  }
+
+  #hotel_page h1 {
+    font-family: 'Cormorant Garamond', sans-serif;
+    font-size: 48px;
+    margin: 0px;
+    padding-top: 51px;
+    padding-bottom: 51px;
+    /* background-color: #177e89;
+    color: white */
+  }
+
+  .room {
+    background-color: #084C61;
+    /* font-family: 'Cormorant Garamond', sans-serif; */
+    display: flex;
+    font-size: 20px;
+    border-bottom: 1px solid white;
+    /* padding-bottom: 10px; */
+  }
+
+  .room div {
+    max-width: 70%;
+    margin: 0px;
+    /* border-right: 1px solid white; */
+    /* padding-bottom: 20px; */
+  }
+
+  .room p {
+    /* max-width: 70%; */
+    margin: 0px;
+    padding-bottom: 20px;
+  }
+
+  #css-test {
+    width: 30%;
+    height: 40%;
+    margin: 0px;
+    border-left: 1px solid white;
+  }
+
+  #home h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 36px;
+    margin: 0px;
+    padding-top: 100px;
+  }
+
+  #home h2 {
+    font-family: 'Cormorant Garamond', sans-serif;
+    font-size: 36px;
+    margin: 0px;
+    padding-bottom: 100px;
+  }
+
+  #hotel-list a {
+    text-decoration: none;
+  }
+
+  #hotel-list a article {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: white;
+    background-color: #084C61;
+    margin-bottom: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  #hotel-list a article p {
+    margin: 0px;
+  }
+}
+
