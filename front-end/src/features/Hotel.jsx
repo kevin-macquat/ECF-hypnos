@@ -2,6 +2,7 @@ import _ from 'lodash';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { fetchApi } from './fetchApi';
 
 import { addRooms, deleteRooms } from './roomsSlice';
 
@@ -14,9 +15,7 @@ function Hotel(props) {
   const user = useSelector((state) => state.user.user);
 
   async function getHotelRooms() {
-    const url = 'http://ecf.local/api/hotels/' + hotel.id + '/rooms';
-
-    const response = await fetch(url, {
+    const response = await fetchApi('hotels/' + hotel.id + '/rooms', {
       headers: {
         'Accept': 'application/json',
       }
@@ -36,7 +35,7 @@ function Hotel(props) {
   }, []);
 
   async function deleteRoom(room) {
-    await fetch('http://ecf.local/api/rooms/' + room.id, {
+    await fetchApi('rooms/' + room.id, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',

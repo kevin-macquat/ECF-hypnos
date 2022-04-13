@@ -16,6 +16,7 @@ import UpdateRoom from './features/UpdateRoom';
 import CreateHotel from './features/CreateHotel';
 import UpdateHotel from './features/UpdateHotel';
 import ManageUser from './features/ManageUser';
+import { fetchApi } from './features/fetchApi';
 
 
 function App() {
@@ -27,8 +28,7 @@ function App() {
 
   useEffect(() => {
     (async function() {
-      const url = 'http://ecf.local/api/hotels';
-      const response = await fetch(url, {
+      const response = await fetchApi('hotels', {
         headers: {
           'Accept': 'application/json',
         }

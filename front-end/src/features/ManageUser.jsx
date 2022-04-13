@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
+import { fetchApi } from './fetchApi';
 
 import { addHotels, deleteHotels } from './hotelsSlice';
 import PromoteUser from './PromoteUser';
@@ -15,7 +16,7 @@ function UpdateHotel() {
   async function getHotelsList() {
     dispatch(deleteHotels([]));
 
-    const response = await fetch('http://ecf.local/api/hotels/', {
+    const response = await fetchApi('hotels/', {
       headers: {
         'Accept': 'application/json',
       }
@@ -25,8 +26,7 @@ function UpdateHotel() {
   }
 
   async function getUserList() {
-    const url = 'http://ecf.local/api/users';
-    const response = await fetch(url, {
+    const response = await fetchApi('users', {
       headers: {
         "Accept": "application/json",
       },
@@ -44,7 +44,7 @@ function UpdateHotel() {
       const userPostData = {
         "roles": ['ROLE_USER']
       };
-      await fetch('http://ecf.local/api/users/' + user.id, {
+      await fetchApi('users/' + user.id, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/merge-patch+json",
@@ -56,7 +56,7 @@ function UpdateHotel() {
       const hotelPostData = {
         "user": null
       };
-      await fetch('http://ecf.local/api/hotels/' + hotel.id, {
+      await fetchApi('hotels/' + hotel.id, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/merge-patch+json",

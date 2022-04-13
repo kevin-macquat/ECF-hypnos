@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { fetchApi } from "./fetchApi";
 
 function UpdateRoom() {
   const location = useLocation();
@@ -28,15 +29,13 @@ function UpdateRoom() {
       return
     }
 
-    const url = 'http://ecf.local/api/rooms/' + room.id;
-
     const postData = {
       "title": title,
       "description": description,
       "price": Number(price)
     }
 
-    await fetch(url, {
+    await fetchApi('rooms/' + room.id, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/merge-patch+json",

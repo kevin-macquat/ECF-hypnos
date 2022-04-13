@@ -2,6 +2,7 @@ import jwtDecode from "jwt-decode";
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { fetchApi } from "./fetchApi";
 
 import { addUser } from "./userSlice";
 
@@ -15,8 +16,6 @@ function Login() {
   async function login(e) {
     e.preventDefault();
 
-    const url = 'http://ecf.local/api/login';
-
     if(email === "" || password === "") {
       return
     }
@@ -25,7 +24,7 @@ function Login() {
       "email": email,
       "password": password
     }
-    const response = await fetch(url, {
+    const response = await fetchApi('login', {
       method: "POST",
       headers: {
         "Content-Type": "application/json"},
@@ -35,7 +34,7 @@ function Login() {
     const tokenData = await response.json();
     const tokenForDecode = await jwtDecode(tokenData.token);
 
-    const user = await fetch("http://ecf.local/api/users/" + tokenForDecode.id, {
+    const user = await fetchApi("users/" + tokenForDecode.id, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

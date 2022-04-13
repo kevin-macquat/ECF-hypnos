@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import { useState } from "react";
 import { useSelector } from 'react-redux';
+import { fetchApi } from './fetchApi';
 
 function PromoteUser(props) {
   const admin = useSelector((state) => state.user.user);
@@ -23,7 +24,7 @@ function PromoteUser(props) {
     const userPostData = {
       "roles": ['ROLE_MANAGER']
     };
-    await fetch('http://ecf.local/api/users/' + user.id, {
+    await fetchApi('users/' + user.id, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/merge-patch+json",
@@ -35,7 +36,7 @@ function PromoteUser(props) {
     const hotelPostData = {
       "user": '/api/users/' + user.id,
     };
-    await fetch('http://ecf.local/api/hotels/' + hotelId, {
+    await fetchApi('hotels/' + hotelId, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/merge-patch+json",

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { fetchApi } from "./fetchApi";
 
 function CreateAccount() {
   const navigate = useNavigate();
@@ -22,7 +23,6 @@ function CreateAccount() {
       return
     }
 
-    const url = 'http://ecf.local/api/users';
     const postData = {
       "email": email,
       "roles": [
@@ -32,7 +32,7 @@ function CreateAccount() {
       "firstName": firstname,
       "lastName": name
     }
-    const response = await fetch(url, {
+    const response = await fetchApi('users', {
       method: "POST",
       headers: {
         "Content-Type": "application/json"},
@@ -47,7 +47,7 @@ function CreateAccount() {
       "password": password,
       "plainPassword": password
     }
-    await fetch(url + '/' + responseData.id, {
+    await fetchApi('users/' + responseData.id, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/merge-patch+json",

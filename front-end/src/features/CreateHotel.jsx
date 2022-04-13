@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { fetchApi } from "./fetchApi";
 
 function CreateHotel() {
   const navigate = useNavigate();
@@ -26,13 +27,12 @@ function CreateHotel() {
       return
     }
 
-    const url = 'http://ecf.local/api/hotels';
     const postData = {
       "name": name,
       "city": city,
       "adress": adress
     }
-    await fetch(url, {
+    await fetchApi('hotels', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
