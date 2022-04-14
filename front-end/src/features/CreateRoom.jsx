@@ -54,11 +54,11 @@ function CreateRoom() {
   const isPermitted = user.roles.includes('ROLE_ADMIN');
 
   return(
-    <>
+    <div id="create-room" className="form">
       <h1>Créer une chambre</h1>
       <form>
         <label>
-          Titre de la chambre:
+          <p>Titre de la chambre:</p>
           <input
             type="text"
             value={title}
@@ -66,16 +66,16 @@ function CreateRoom() {
           />
         </label>
         <label>
-          Description:
+          <p>Description:</p>
           <textarea
-            cols="40"
+            cols="30"
             rows="5"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </label>
         <label>
-          Prix:
+          <p>Prix:</p>
           <input
             type="number"
             value={price}
@@ -84,29 +84,33 @@ function CreateRoom() {
         </label>
 
         {isPermitted &&
-          <select
-            value={hotel}
-            onChange={(e) => setHotel(e.target.value)}
-          >
-            <option
-              value={0}
+          <label>
+            <p>Hotel:</p>
+            <select
+              value={hotel}
+              onChange={(e) => setHotel(e.target.value)}
             >
-              -- selectionner un hotel --
-            </option>
+              <option
+                value={0}
+              >
+                -- selectionner un hotel --
+              </option>
 
-            {hotels.map(hotel => {
-              return(
-                <option
-                  value={hotel.id}
-                >
-                  {hotel.name}
-                </option>
-              )
-            })}
+              {hotels.map(hotel => {
+                return(
+                  <option
+                    value={hotel.id}
+                  >
+                    {hotel.name}
+                  </option>
+                )
+              })}
 
-          </select>
+            </select>
+          </label>
         }
 
+        <br/>
         <button
           type="submit"
           onClick={(e) => createRoom(e)}
@@ -114,7 +118,7 @@ function CreateRoom() {
           créer
         </button>
       </form>
-    </>
+    </div>
   )
 }
 

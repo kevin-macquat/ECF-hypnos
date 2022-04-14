@@ -77,7 +77,7 @@ function UpdateHotel() {
   }, []);
 
   return(
-    <>
+    <div id='manage-user'>
       <h1>Utilisateurs</h1>
       {usersList.length > 0 ?
         <>
@@ -120,7 +120,7 @@ function UpdateHotel() {
           :
           <h2>LOADING...</h2>
       }
-    </>
+    </div>
   )
 }
 

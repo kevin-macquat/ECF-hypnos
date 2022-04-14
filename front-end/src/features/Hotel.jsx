@@ -51,16 +51,18 @@ function Hotel(props) {
 
   return (
     <div id='hotel_page'>
-      {isPermitted &&
-        <button
-        onClick={() => navigate('/manager/create_room')}
-        >
-          Ajouter une chambre
-        </button>
-      }
-      <h1>
-        {hotel.name}
-      </h1>
+      <header>
+        <h1>
+          {hotel.name}
+        </h1>
+        {isPermitted &&
+          <button
+          onClick={() => navigate('/manager/create_room')}
+          >
+            Ajouter une chambre
+          </button>
+        }
+      </header>
       {rooms.map(room => {
         return <div className='room' key={room.id}>
           {room.image &&

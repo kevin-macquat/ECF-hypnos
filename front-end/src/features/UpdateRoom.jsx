@@ -52,11 +52,11 @@ function UpdateRoom() {
   }
 
   return(
-    <>
+    <div id="update-room" className="form">
       <h1>Modifer</h1>
       <form>
         <label>
-          Titre de la chambre:
+          <p>Titre de la chambre:</p>
           <input
             type="text"
             value={title}
@@ -64,22 +64,23 @@ function UpdateRoom() {
           />
         </label>
         <label>
-          Description:
+          <p>Description:</p>
           <textarea
-            cols="40"
+            cols="30"
             rows="5"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </label>
         <label>
-          Prix:
+          <p>Prix:</p>
           <input
             type="number"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           />
         </label>
+        <br/>
         <button
           type="submit"
           onClick={(e) => updateRoom(e)}
@@ -87,7 +88,7 @@ function UpdateRoom() {
           modifer
         </button>
       </form>
-    </>
+    </div>
   )
 }
 

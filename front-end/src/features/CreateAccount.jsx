@@ -59,7 +59,7 @@ function CreateAccount() {
   }
 
   return(
-    <div id="create_account">
+    <div id="create_account" className="form">
       <h1>Créer un compte</h1>
       <form>
         <label>
@@ -87,7 +87,7 @@ function CreateAccount() {
           />
         </label>
         <label>
-          <p>Password:</p>
+          <p>Mot de passe:</p>
           <input
             type="password"
             value={password}
@@ -95,7 +95,7 @@ function CreateAccount() {
           />
         </label>
         <label>
-          <p>Password:</p>
+          <p>Confirmer mot de passe:</p>
           <input
             type="password"
             value={passwordForConfirmation}

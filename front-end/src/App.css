@@ -12,11 +12,18 @@ button {
   padding: 8px 20px 8px 20px;
   border: none;
   border-radius: 10px;
+  margin: 5px;
+  cursor: pointer;
+  /* margin-top: 5px; */
 }
 
 #main-header {
   border-bottom: 1px solid #323031;
   font-family: 'Roboto', sans-serif;
+}
+
+#home {
+  background-color: #C4C4C4;
 }
 
 @media screen and (max-width: 725px) {
@@ -55,7 +62,7 @@ button {
   }
 
   #login,
-  #create_account
+  .form
   {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
@@ -69,7 +76,7 @@ button {
   }
 
   #login h1,
-  #create_account h1
+  .form h1
   {
     margin: 0px;
     padding-top: 30px;
@@ -78,7 +85,7 @@ button {
   }
 
   #login form label p,
-  #create_account form label p
+  .form form label p
   {
     margin: 0px;
     padding-top: 30px;
@@ -103,12 +110,12 @@ button {
   }
 
   #login form button,
-  #create_account form button
+  .form form button
   {
     margin-top: 40px;
   }
 
-  #create_account {
+  .form {
     padding-bottom: 60px;
   }
 
@@ -127,19 +134,17 @@ button {
     margin: 0px;
     padding-top: 51px;
     padding-bottom: 51px;
-    /* background-color: #177e89;
-    color: white */
   }
 
   .room {
     background-color: #084C61;
-    /* font-family: 'Cormorant Garamond', sans-serif; */
     font-size: 20px;
     padding-bottom: 10px;
   }
 
   .room p {
     margin: 0px;
+    padding-bottom: 20px;
   }
 
   #home h1 {
@@ -160,7 +165,9 @@ button {
     text-decoration: none;
   }
 
-  #hotel-list a article {
+  #hotel-list a article,
+  #manage-user article
+  {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     color: white;
@@ -170,7 +177,9 @@ button {
     padding-bottom: 20px;
   }
 
-  #hotel-list a article p {
+  #hotel-list a article p,
+  #manage-user article p
+  {
     margin: 0px;
   }
 }
@@ -178,11 +187,6 @@ button {
 
 
 @media screen and (min-width: 726px) {
-
-  /* #main-header {
-    border-bottom: 1px solid #323031;
-    font-family: 'Roboto', sans-serif;
-  } */
 
   #main-header nav ul {
     padding-left: 0px;
@@ -251,19 +255,17 @@ button {
   }
 
   #login,
-  #create_account
+  .form
   {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     background-color: #C4C4C4;
     margin: 70px 200px 100px 200px;
-    /* display: flex;
-    justify-content: center; */
     text-align: center;
   }
 
   #login h1,
-  #create_account h1
+  .form h1
   {
     margin: 0px;
     padding-top: 30px;
@@ -272,23 +274,11 @@ button {
   }
 
   #login form label p,
-  #create_account form label p
+  .form form label p
   {
     margin: 0px;
     padding-top: 30px;
   }
-
-  /* #login button,
-  #create_account button
-  {
-    background-color: #323031;
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    padding: 8px 20px 8px 20px;
-    border: none;
-    border-radius: 10px;
-  } */
 
   #login > button {
     padding: 8px 20px 8px 20px;
@@ -297,18 +287,28 @@ button {
   }
 
   #login form button,
-  #create_account form button
+  .form form button
   {
     margin-top: 40px;
   }
 
-  #create_account {
+  .form {
     padding-bottom: 60px;
   }
 
   #hotel_page {
     background-color: #177e89;
     color: white;
+  }
+
+  #hotel_page header {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+  }
+
+  #hotel_page header button {
+    height: 35px;
   }
 
   #hotel_page img {
@@ -322,28 +322,21 @@ button {
     margin: 0px;
     padding-top: 51px;
     padding-bottom: 51px;
-    /* background-color: #177e89;
-    color: white */
   }
 
   .room {
     background-color: #084C61;
-    /* font-family: 'Cormorant Garamond', sans-serif; */
     display: flex;
     font-size: 20px;
     border-bottom: 1px solid white;
-    /* padding-bottom: 10px; */
   }
 
   .room div {
-    max-width: 70%;
+    max-width: 50%;
     margin: 0px;
-    /* border-right: 1px solid white; */
-    /* padding-bottom: 20px; */
   }
 
   .room p {
-    /* max-width: 70%; */
     margin: 0px;
     padding-bottom: 20px;
   }
@@ -373,17 +366,27 @@ button {
     text-decoration: none;
   }
 
-  #hotel-list a article {
+  #hotel-list div {
+    float: left;
+    width: calc(50% - 5px);
+    margin-bottom: 5px;
+    margin-right: 5px;
+  }
+
+  #hotel-list a article,
+  #manage-user article
+  {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     color: white;
     background-color: #084C61;
-    margin-bottom: 5px;
     padding-top: 20px;
     padding-bottom: 20px;
   }
 
-  #hotel-list a article p {
+  #hotel-list a article p,
+  #manage-user article p
+  {
     margin: 0px;
   }
 }

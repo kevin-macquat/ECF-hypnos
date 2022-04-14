@@ -49,7 +49,6 @@ function Hotels() {
 
   return (
     <>
-      <main id='hotel-list'>
       {isPermitted &&
         <button
         onClick={() => navigate('/admin/create_hotel')}
@@ -57,11 +56,12 @@ function Hotels() {
           Ajouter un hotel
         </button>
       }
+      <main id='hotel-list'>
         {hotels.length > 0 ?
           <>
             {hotels.map(hotel => {
               return(
-                <>
+                <div>
                   <Link to={'/hotel/' + hotel.id}>
                     <article key={hotel.id}>
                       <p>{hotel.name}</p>
@@ -70,21 +70,21 @@ function Hotels() {
                       <p>{hotel.stars}☆</p>
                     </article>
                   </Link>
-                  {isPermitted &&
-                    <>
-                      <button
-                        onClick={() => navigate('/admin/update_hotel', {state : hotel} )}
-                      >
-                        modifer
-                      </button>
-                      <button
-                        onClick={() => deleteHotel(hotel)}
-                      >
-                        supprimer
-                      </button>
-                    </>
-                  }
-                </>
+                    {isPermitted &&
+                      <>
+                        <button
+                          onClick={() => navigate('/admin/update_hotel', {state : hotel} )}
+                        >
+                          modifer
+                        </button>
+                        <button
+                          onClick={() => deleteHotel(hotel)}
+                        >
+                          supprimer
+                        </button>
+                      </>
+                    }
+                </div>
               )
             })}
           </>

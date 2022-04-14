@@ -45,11 +45,11 @@ function CreateHotel() {
   }
 
   return(
-    <>
+    <div id="create-hotel" className="form">
       <h1>Ajouter un hotel</h1>
       <form>
         <label>
-          Nom de l'hotel:
+          <p>Nom de l'hotel:</p>
           <input
             type="text"
             value={name}
@@ -57,7 +57,7 @@ function CreateHotel() {
           />
         </label>
         <label>
-          Ville:
+          <p>Ville:</p>
           <input
             type="text"
             value={city}
@@ -65,13 +65,14 @@ function CreateHotel() {
           />
         </label>
         <label>
-          Adresse:
+          <p>Adresse:</p>
           <input
             type="text"
             value={adress}
             onChange={(e) => setAdress(e.target.value)}
           />
         </label>
+        <br/>
         <button
           type="submit"
           onClick={(e) => createHotel(e)}
@@ -79,7 +80,7 @@ function CreateHotel() {
           créer
         </button>
       </form>
-    </>
+    </div>
   )
 }
 

@@ -12,7 +12,6 @@ function Header() {
 
   const [width, setWidth] = useState(window.innerWidth);
   const [showMenu, setShowMenu] = useState(false);
-  console.log(width);
 
   const menu =
   <>
