@@ -55,7 +55,7 @@ function CreateAccount() {
       body: JSON.stringify(modifyPassword),
     });
 
-    navigate('/');
+    navigate('/login');
   }
 
   return(
