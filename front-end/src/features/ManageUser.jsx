@@ -16,7 +16,7 @@ function UpdateHotel() {
   async function getHotelsList() {
     dispatch(deleteHotels([]));
 
-    const response = await fetchApi('hotels/', {
+    const response = await fetchApi('hotels', {
       headers: {
         'Accept': 'application/json',
       }
