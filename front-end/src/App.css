@@ -14,7 +14,6 @@ button {
   border-radius: 10px;
   margin: 5px;
   cursor: pointer;
-  /* margin-top: 5px; */
 }
 
 #main-header {
@@ -70,8 +69,6 @@ button {
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 20px;
-    /* display: flex;
-    justify-content: center; */
     text-align: center;
   }
 
@@ -90,18 +87,6 @@ button {
     margin: 0px;
     padding-top: 30px;
   }
-
-  /* #login button,
-  #create_account button
-  {
-    background-color: #323031;
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    padding: 8px 20px 8px 20px;
-    border: none;
-    border-radius: 10px;
-  } */
 
   #login > button {
     padding: 8px 20px 8px 20px;
