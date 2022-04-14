@@ -13,7 +13,7 @@ function CreateRoom() {
   const [description, setDescription] = useState('room description');
   const [price, setPrice] = useState(100);
   // const [image, setPassword] = useState('test');
-  const [hotel, setHotel] = useState(user.hotel);
+  const [hotel, setHotel] = useState(user.hotel || 0);
   // const [galery, setPasswordForConfirmation] = useState('test');
   // const [bookingLink, setPasswordForConfirmation] = useState('test');
 
@@ -23,7 +23,8 @@ function CreateRoom() {
     if(
       title === "" ||
       description === "" ||
-      price === ""
+      price === "" ||
+      hotel === 0
     ) {
       return
     }
@@ -66,8 +67,9 @@ function CreateRoom() {
         </label>
         <label>
           Description:
-          <input
-            type="text"
+          <textarea
+            cols="40"
+            rows="5"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -86,6 +88,11 @@ function CreateRoom() {
             value={hotel}
             onChange={(e) => setHotel(e.target.value)}
           >
+            <option
+              value={0}
+            >
+              -- selectionner un hotel --
+            </option>
 
             {hotels.map(hotel => {
               return(

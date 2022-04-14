@@ -65,8 +65,9 @@ function UpdateRoom() {
         </label>
         <label>
           Description:
-          <input
-            type="text"
+          <textarea
+            cols="40"
+            rows="5"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
