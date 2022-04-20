@@ -73,6 +73,7 @@ function Hotel(props) {
             {room.description &&
               <p>{room.description}</p>
             }
+            <p>{room.price}€ / nuit</p>
 
             {isPermitted &&
               <>

@@ -33,6 +33,7 @@ function CreateRoom() {
       "title": title,
       "description": description,
       "price": Number(price),
+      "image": "https://resize-elle.ladmedia.fr/rcrop/638,,forcex/img/var/plain_site/storage/images/loisirs/sorties/hotels/belles-chambres-d-hotel/76660985-1-fre-FR/Les-plus-belles-chambres-d-hotel-pour-une-nuit-de-Saint-Valentin-reussie.jpg",
       "hotel": "api/hotels/" + hotel
     }
     await fetchApi('rooms', {
