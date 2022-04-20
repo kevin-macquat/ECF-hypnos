@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { addHotels } from './features/hotelsSlice';
 
@@ -43,7 +43,7 @@ function App() {
 
   return (
     <>
-      <Router>
+      <BrowserRouter basename={process.env.REACT_APP_BASENAME}>
         <Header />
         <Routes>
           <Route path="/" exact element={<Home />} />
@@ -74,7 +74,7 @@ function App() {
           <Route path="/create_account" exact element={<CreateAccount />} />
           <Route path="/login" exact element={<Login />} />
         </Routes>
-      </Router>
+      </BrowserRouter>
     </>
   );
 }
