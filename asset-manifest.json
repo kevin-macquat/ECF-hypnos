@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/ECF-hypnos/static/css/main.5dbb541a.css",
-    "main.js": "/ECF-hypnos/static/js/main.8fe339cb.js",
+    "main.js": "/ECF-hypnos/static/js/main.a5316ef9.js",
     "static/js/787.675e522d.chunk.js": "/ECF-hypnos/static/js/787.675e522d.chunk.js",
     "static/media/h_hypnos_logo.png": "/ECF-hypnos/static/media/h_hypnos_logo.0e5e30832f74c714a636.png",
     "static/media/hypnos_name_logo.png": "/ECF-hypnos/static/media/hypnos_name_logo.92a28c4bd4bb9251bbe5.png",
     "index.html": "/ECF-hypnos/index.html",
     "main.5dbb541a.css.map": "/ECF-hypnos/static/css/main.5dbb541a.css.map",
-    "main.8fe339cb.js.map": "/ECF-hypnos/static/js/main.8fe339cb.js.map",
+    "main.a5316ef9.js.map": "/ECF-hypnos/static/js/main.a5316ef9.js.map",
     "787.675e522d.chunk.js.map": "/ECF-hypnos/static/js/787.675e522d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5dbb541a.css",
-    "static/js/main.8fe339cb.js"
+    "static/js/main.a5316ef9.js"
   ]
 }
