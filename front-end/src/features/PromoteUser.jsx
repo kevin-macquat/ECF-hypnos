@@ -16,7 +16,6 @@ function PromoteUser(props) {
 
   async function promoteUser() {
     if(user.roles.includes('ROLE_MANAGER') || user.roles.includes('ROLE_ADMIN') || hotelId === 0 ) {
-      console.log('CUTTED');
       setShowSelection(false);
       return
     }
@@ -44,7 +43,6 @@ function PromoteUser(props) {
       },
       body: JSON.stringify(hotelPostData),
     });
-    console.log('hotelPostData');
 
     getUserList();
     getHotelsList();
