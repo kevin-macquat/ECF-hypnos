@@ -14,7 +14,7 @@ function UpdateHotel() {
   const [city, setCity] = useState(hotel.city);
   const [adress, setAdress] = useState(hotel.adress);
   // const [description, setPassword] = useState('test');
-  // const [stars, setPassword] = useState('test');
+  const [stars, setStars] = useState(hotel.stars || 1);
   // const [userId, setPasswordForConfirmation] = useState('test');
   // const [bookingLink, setPasswordForConfirmation] = useState('test');
 
@@ -24,7 +24,9 @@ function UpdateHotel() {
     if(
       name === "" ||
       city === "" ||
-      adress === ""
+      adress === "" ||
+      stars < 1 ||
+      stars > 5
     ) {
       return
     }
@@ -32,7 +34,8 @@ function UpdateHotel() {
     const postData = {
       "name": name,
       "city": city,
-      "adress": adress
+      "adress": adress,
+      "stars": Number(stars)
     };
     await fetchApi('hotels/' + hotel.id, {
       method: "PATCH",
@@ -71,6 +74,16 @@ function UpdateHotel() {
             type="text"
             value={adress}
             onChange={(e) => setAdress(e.target.value)}
+          />
+        </label>
+        <label>
+          <p>Etoiles:</p>
+          <input
+            type="number"
+            value={stars}
+            onChange={(e) => setStars(e.target.value)}
+            min="1"
+            max="5"
           />
         </label>
         <br/>
