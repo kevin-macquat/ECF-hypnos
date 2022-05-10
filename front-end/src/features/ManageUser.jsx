@@ -101,6 +101,7 @@ function UpdateHotel() {
                 {
                   user.roles.includes('ROLE_MANAGER') ?
                   <button
+                    className='admin'
                     onClick={() => demoteUser(user)}
                   >
                     destituer

@@ -52,7 +52,9 @@ function PromoteUser(props) {
   return(
     <>
       {!showSelection &&
-        <button onClick={() => setShowSelection(!showSelection)}>
+        <button
+        className='admin'
+        onClick={() => setShowSelection(!showSelection)}>
           promouvoir
         </button>
       }
@@ -83,7 +85,9 @@ function PromoteUser(props) {
           :
           <span>Pas d'hotel disponible</span>
         }
-        <button onClick={() => promoteUser()}>
+        <button
+        className='admin'
+        onClick={() => promoteUser()}>
         valider
       </button>
       </>

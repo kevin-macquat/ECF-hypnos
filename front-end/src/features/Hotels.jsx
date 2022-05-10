@@ -51,6 +51,7 @@ function Hotels() {
     <>
       {isPermitted &&
         <button
+        className='admin'
         onClick={() => navigate('/admin/create_hotel')}
         >
           Ajouter un hotel
@@ -73,11 +74,13 @@ function Hotels() {
                     {isPermitted &&
                       <>
                         <button
+                          className='admin'
                           onClick={() => navigate('/admin/update_hotel', {state : hotel} )}
                         >
                           modifer
                         </button>
                         <button
+                          className='admin'
                           onClick={() => deleteHotel(hotel)}
                         >
                           supprimer

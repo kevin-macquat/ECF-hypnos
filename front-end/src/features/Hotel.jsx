@@ -57,6 +57,7 @@ function Hotel(props) {
         </h1>
         {isPermitted &&
           <button
+          className='admin'
           onClick={() => navigate('/manager/create_room')}
           >
             Ajouter une chambre
@@ -78,11 +79,13 @@ function Hotel(props) {
             {isPermitted &&
               <>
                 <button
+                  className='admin'
                   onClick={() => navigate('/manager/update_room', {state : room} )}
                 >
                   modifer
                 </button>
                 <button
+                  className='admin'
                   onClick={() => deleteRoom(room)}
                 >
                   supprimer
