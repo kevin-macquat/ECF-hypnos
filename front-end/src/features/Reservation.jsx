@@ -108,11 +108,19 @@ function Reservation() {
         return
       }
 
+      const response = await fetchApi('rooms/' + roomId, {
+        headers: {
+          'Accept': 'application/json',
+        }
+      });
+      const roomsData = await response.json();
+
       const postData = {
         "room": "api/rooms/" + roomId,
         "user": "api/users/" + user.id,
         "dateStart": moment(stayDate.startDate).format(),
-        "dateEnd": moment(stayDate.endDate).format()
+        "dateEnd": moment(stayDate.endDate).format(),
+        "roomTitle": await roomsData.title
       }
 
       await fetchApi('reservations', {

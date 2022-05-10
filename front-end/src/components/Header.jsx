@@ -28,7 +28,9 @@ function Header() {
 
     {user.roles.includes('ROLE_USER') &&
       <li>
-        Mes réservations
+        <Link to={"/reservation_list"}>
+          Mes réservations
+        </Link>
       </li>
     }
 
