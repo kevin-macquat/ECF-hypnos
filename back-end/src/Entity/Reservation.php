@@ -29,6 +29,9 @@ class Reservation
     #[ORM\Column(type: 'date')]
     private $date_end;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $roomTitle;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -78,6 +81,18 @@ class Reservation
     public function setDateEnd(\DateTimeInterface $date_end): self
     {
         $this->date_end = $date_end;
+
+        return $this;
+    }
+
+    public function getRoomTitle(): ?string
+    {
+        return $this->roomTitle;
+    }
+
+    public function setRoomTitle(string $roomTitle): self
+    {
+        $this->roomTitle = $roomTitle;
 
         return $this;
     }
