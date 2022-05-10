@@ -17,6 +17,7 @@ import CreateHotel from './features/CreateHotel';
 import UpdateHotel from './features/UpdateHotel';
 import ManageUser from './features/ManageUser';
 import { fetchApi } from './features/fetchApi';
+import Reservation from './features/Reservation';
 
 
 function App() {
@@ -48,11 +49,12 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Home />} />
 
-
           <Route path="/hotels" exact element={<Hotels />} />
           {hotels.map(hotel => {
              return <Route path={'/hotel/' + hotel.id} exact element={<Hotel component={hotel} />}/>
           })}
+
+          <Route path="/reservation" exact element={<Reservation />} />
 
           {user.roles.includes('ROLE_ADMIN') &&
             <>

@@ -4,7 +4,18 @@
   max-height: 80px;
 }
 
-button {
+#number-night-container button {
+  display: inline;
+}
+
+#night {
+  display: inline;
+}
+
+#login > button,
+#login > form > button,
+.form > form > button,
+.form > form > label > button {
   background-color: #323031;
   color: white;
   font-family: 'Roboto', sans-serif;
@@ -26,6 +37,18 @@ button {
 }
 
 @media screen and (max-width: 725px) {
+
+
+  .rdrCalendarWrapper {
+    /* width: 280px; */
+    width: calc(100% / 5 * 4);
+  }
+
+  .rdrMonth {
+    padding: 0px !important;
+    width: 100% !important;
+    /* height: 350px; */
+  }
 
   #main-header nav {
     height: 80px;
@@ -95,7 +118,8 @@ button {
   }
 
   #login form button,
-  .form form button
+  .form > form > button
+  /* .form form button */
   {
     margin-top: 40px;
   }
@@ -271,8 +295,8 @@ button {
     margin-bottom: 100px;
   }
 
-  #login form button,
-  .form form button
+  #login > form > button,
+  .form > form > button
   {
     margin-top: 40px;
   }
@@ -373,6 +397,20 @@ button {
   #manage-user article p
   {
     margin: 0px;
+  }
+
+  #red p {
+    display: inline;
+    background-color: coral;
+    padding-left: 110px;
+    padding-right: 110px;
+  }
+
+  #green p {
+    display: inline;
+    background-color: lightgreen;
+    padding-left: 129px;
+    padding-right: 129px;
   }
 }
 

@@ -50,6 +50,7 @@ function Login() {
         'hotel': hotelId,
         'firstName': userData.first_name,
         'lastName': userData.last_name,
+        'id': userData.id,
       }));
       navigate('/');
     }else {
@@ -58,13 +59,14 @@ function Login() {
         ...tokenData,
         'firstName': userData.first_name,
         'lastName': userData.last_name,
+        'id': userData.id,
       }));
       navigate('/');
     }
   }
 
   return(
-    <div id="login">
+    <div id="login" className="form">
       <h1>Connexion</h1>
       <form>
         <label>

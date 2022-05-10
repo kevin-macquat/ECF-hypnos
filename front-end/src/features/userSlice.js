@@ -10,6 +10,7 @@ export const userSlice = createSlice({
       hotel: '',
       firstName: '',
       lastName: '',
+      id: '',
     }
   },
   reducers: {
@@ -20,6 +21,7 @@ export const userSlice = createSlice({
       state.user.hotel = action.payload.hotel;
       state.user.firstName = action.payload.firstName;
       state.user.lastName = action.payload.lastName;
+      state.user.id = action.payload.id;
     },
     deleteUser(state) {
       state.user.email = '';
@@ -28,6 +30,7 @@ export const userSlice = createSlice({
       state.user.hotel = '';
       state.user.firstName = '';
       state.user.lastName = '';
+      state.user.id = '';
     }
   }
 })

@@ -21,12 +21,14 @@ function Header() {
       </Link>
     </li>
     <li>
-      Reserver
+      <Link to="/reservation">
+        Réserver
+      </Link>
     </li>
 
     {user.roles.includes('ROLE_USER') &&
       <li>
-        Mes reservations
+        Mes réservations
       </li>
     }
 
@@ -41,7 +43,7 @@ function Header() {
     {user.roles.includes('ROLE_ADMIN') &&
       <li>
         <Link to={"/admin/manage_user"}>
-        Gestion de Managers
+        Gestion des Managers
         </Link>
       </li>
     }
