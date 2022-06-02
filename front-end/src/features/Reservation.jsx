@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { fetchApi } from "./fetchApi";
 import moment from 'moment';
 import 'react-date-range/dist/styles.css';
@@ -13,13 +13,15 @@ import { addRooms, deleteRooms } from './roomsSlice';
 function Reservation() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+  const room = location.state;
 
   const hotelList = _.sortBy(useSelector((state) => state.hotels.hotels), ['id']);
   const rooms = _.sortBy(useSelector((state) => state.rooms.rooms), ['title']);
   const user = useSelector((state) => state.user.user);
 
-  const [roomId, setRoomId] = useState(0);
-  const [hotelId, setHotelId] = useState(0);
+  const [roomId, setRoomId] = useState(room ? room.id : 0);
+  const [hotelId, setHotelId] = useState(room ? Number(room.hotel.slice(12)) : 0);
   const [infoModal, setInfoModal] = useState({color:'', text:''});
   const [nightNumber, setNightNumber] = useState(1);
   const [stayDate, setStayDate] = useState({

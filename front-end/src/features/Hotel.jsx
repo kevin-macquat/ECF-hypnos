@@ -76,6 +76,13 @@ function Hotel(props) {
             }
             <p>{room.price}€ / nuit</p>
 
+            <button
+              className='button'
+              onClick={() => navigate('/reservation', {state : room} )}
+            >
+              réserver
+            </button>
+
             {isPermitted &&
               <>
                 <button
