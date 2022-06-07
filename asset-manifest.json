@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/ECF-hypnos/static/css/main.9b9be385.css",
-    "main.js": "/ECF-hypnos/static/js/main.922098c0.js",
+    "main.css": "/ECF-hypnos/static/css/main.b95e949c.css",
+    "main.js": "/ECF-hypnos/static/js/main.0e83352c.js",
     "static/js/787.675e522d.chunk.js": "/ECF-hypnos/static/js/787.675e522d.chunk.js",
     "static/media/h_hypnos_logo.png": "/ECF-hypnos/static/media/h_hypnos_logo.0e5e30832f74c714a636.png",
     "static/media/hypnos_name_logo.png": "/ECF-hypnos/static/media/hypnos_name_logo.92a28c4bd4bb9251bbe5.png",
     "index.html": "/ECF-hypnos/index.html",
-    "main.9b9be385.css.map": "/ECF-hypnos/static/css/main.9b9be385.css.map",
-    "main.922098c0.js.map": "/ECF-hypnos/static/js/main.922098c0.js.map",
+    "main.b95e949c.css.map": "/ECF-hypnos/static/css/main.b95e949c.css.map",
+    "main.0e83352c.js.map": "/ECF-hypnos/static/js/main.0e83352c.js.map",
     "787.675e522d.chunk.js.map": "/ECF-hypnos/static/js/787.675e522d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9b9be385.css",
-    "static/js/main.922098c0.js"
+    "static/css/main.b95e949c.css",
+    "static/js/main.0e83352c.js"
   ]
 }
