@@ -259,12 +259,12 @@ function Reservation() {
           }
         </label>
 
-        <label id="number-night-container">
+        <div id="number-night-container">
           <p>Nombre de nuits :</p>
           <button type="button" onClick={() => subNight()}>-</button>
           <p id="night">{nightNumber} nuits</p>
           <button type="button" onClick={() => addNight()}>+</button>
-        </label>
+        </div>
 
         <label>
           <p>Début du séjour :</p>

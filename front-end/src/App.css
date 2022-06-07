@@ -17,7 +17,8 @@
 #login > button,
 #login > form > button,
 .form > form > button,
-.form > form > label > button {
+.form > form > label > button,
+#number-night-container > button {
   background-color: #323031;
   color: white;
   font-family: 'Roboto', sans-serif;
