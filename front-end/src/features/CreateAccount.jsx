@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { fetchApi } from "./fetchApi";
+import { fetchApi, login } from "./fetchApi";
 
 function CreateAccount() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [firstname, setFirstname] = useState('Jean');
@@ -55,7 +57,9 @@ function CreateAccount() {
       body: JSON.stringify(modifyPassword),
     });
 
-    navigate('/login');
+    (async() => {
+      login(email, password, dispatch, navigate);
+    })();
   }
 
   return(

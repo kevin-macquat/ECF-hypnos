@@ -1,10 +1,7 @@
-import jwtDecode from "jwt-decode";
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { fetchApi } from "./fetchApi";
-
-import { addUser } from "./userSlice";
+import { login } from "./fetchApi";
 
 function Login() {
   const dispatch = useDispatch();
@@ -12,58 +9,6 @@ function Login() {
 
   const [email, setEmail] = useState('manager@manager.com');
   const [password, setPassword] = useState('manager');
-
-  async function login(e) {
-    e.preventDefault();
-
-    if(email === "" || password === "") {
-      return
-    }
-
-    const postData = {
-      "email": email,
-      "password": password
-    }
-    const response = await fetchApi('login', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"},
-      body: JSON.stringify(postData),
-    });
-
-    const tokenData = await response.json();
-    const tokenForDecode = await jwtDecode(tokenData.token);
-
-    const user = await fetchApi("users/" + tokenForDecode.id, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const userData = await user.json();
-
-    if(tokenForDecode.roles.includes('ROLE_MANAGER')){
-      const hotelId = Number(userData.hotel.slice(12));
-      dispatch(addUser({
-        ...tokenForDecode,
-        ...tokenData,
-        'hotel': hotelId,
-        'firstName': userData.first_name,
-        'lastName': userData.last_name,
-        'id': userData.id,
-      }));
-      navigate('/');
-    }else {
-      dispatch(addUser({
-        ...tokenForDecode,
-        ...tokenData,
-        'firstName': userData.first_name,
-        'lastName': userData.last_name,
-        'id': userData.id,
-      }));
-      navigate('/');
-    }
-  }
 
   return(
     <div id="login" className="form">
@@ -88,7 +33,10 @@ function Login() {
         <br/>
         <button
           type="submit"
-          onClick={(e) => login(e)}
+          onClick={(e) => (async() => {
+            e.preventDefault();
+            login(email, password, dispatch, navigate);
+          })()}
         >
           Connexion
         </button>
