@@ -138,7 +138,7 @@ function Reservation() {
         setAllRoomsReservations(await getRoomsReservation());
       })();
 
-      // navigate('/reservation_list');
+      navigate('/reservation_list');
     }
   }
 
