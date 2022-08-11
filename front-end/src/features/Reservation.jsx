@@ -34,7 +34,7 @@ function Reservation() {
     let datesList = [];
     if(allRoomsReservations.length > 0) {
       allRoomsReservations.forEach(reservation => {
-        for (let m = moment(reservation.dateStart); m.isSameOrBefore(reservation.dateEnd); m.add(1, 'days')) {
+        for (let m = moment(reservation.dateStart).add(1, 'days'); m.isBefore(reservation.dateEnd); m.add(1, 'days')) {
           datesList.push(m.toDate());
         }
       })
@@ -80,9 +80,9 @@ function Reservation() {
     if(allRoomsReservations.length > 0) {
       allRoomsReservations.forEach(reservation => {
         if((moment(reservation.dateStart) > moment(stayDate.startDate) &&
-          moment(reservation.dateStart) > moment(stayDate.endDate)) ||
-          (moment(reservation.dateEnd) < moment(stayDate.startDate) &&
-          moment(reservation.dateEnd) < moment(stayDate.endDate))
+          moment(reservation.dateStart) > moment(stayDate.endDate).subtract(1,'d')) ||
+          (moment(reservation.dateEnd).subtract(1,'d') < moment(stayDate.startDate) &&
+          moment(reservation.dateEnd).subtract(1,'d') < moment(stayDate.endDate).subtract(1,'d'))
         ) {
           testAllReservation.push(true);
         } else {
