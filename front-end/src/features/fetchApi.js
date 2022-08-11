@@ -8,7 +8,6 @@ export function fetchApi(url, ...otherParams) {
 }
 
 export async function login(email, password, dispatch, navigate) {
-    console.log("début login");
 
   if(email === "" || password === "") {
     return

@@ -30,31 +30,15 @@ function CreateAccount() {
       "roles": [
         "ROLE_USER"
       ],
-      "password": "password",
+      "password": password,
       "firstName": firstname,
       "lastName": name
     }
-    const response = await fetchApi('users', {
+    await fetchApi('users', {
       method: "POST",
       headers: {
         "Content-Type": "application/json"},
       body: JSON.stringify(postData),
-    });
-
-    const responseData = await response.json();
-
-    // temporaly for hash password
-
-    const modifyPassword = {
-      "password": password,
-      "plainPassword": password
-    }
-    await fetchApi('users/' + responseData.id, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/merge-patch+json",
-      },
-      body: JSON.stringify(modifyPassword),
     });
 
     (async() => {
