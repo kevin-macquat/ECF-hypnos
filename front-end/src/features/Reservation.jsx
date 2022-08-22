@@ -32,13 +32,30 @@ function Reservation() {
 
   function disabledDatesList() {
     let datesList = [];
+    let datesList2 = [];
     if(allRoomsReservations.length > 0) {
       allRoomsReservations.forEach(reservation => {
-        for (let m = moment(reservation.dateStart).add(1, 'days'); m.isBefore(reservation.dateEnd); m.add(1, 'days')) {
-          datesList.push(m.toDate());
+        for(let m = moment(reservation.dateStart).add(1, 'd'); m.isBefore(reservation.dateEnd); m.add(1, 'd')) {
+          datesList.push(m.format());
         }
+        for(let m = moment(reservation.dateStart); m.isSameOrBefore(reservation.dateEnd); m.add(1, 'd')) {
+          datesList2.push(m.format());
+        }
+
       })
     }
+
+    datesList2.sort()
+    datesList2 = datesList2.filter((item, index) => {
+      if( datesList2[datesList2.indexOf(item, index + 1)] === item) {
+        return datesList2.indexOf(item);
+      } else { return ''}
+    })
+    datesList  = [...datesList, ...datesList2];
+
+    console.log(datesList);
+    datesList = datesList.map(e => moment(e).toDate())
+
     return datesList
   }
 
